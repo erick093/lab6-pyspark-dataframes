@@ -1,0 +1,28 @@
+# Docker compose for PySpark local development
+# Version: 1.0
+# expose spark history server on port 18080
+services:
+  pyspark:
+    image: jupyter/pyspark-notebook
+    container_name: pyspark-lab-sparksql
+    user: root
+    ports:
+      - 7979:8888
+      - 4040:4040
+      - 4041:4041
+      - 4042:4042
+      - 18080:18080
+    expose:
+      - 18080
+    volumes:
+      - .:/home/jovyan/work
+    working_dir: /home/jovyan/work
+    environment:
+      - SPARK_PUBLIC_DNS=localhost
+      - JUPYTER_ENABLE_LAB=yes
+      - GRANT_SUDO=yes
+      - NB_GID=1000
+      - NB_UID=1000
+      - NB_USER=jovyan
+    command:
+      bash -c "start-notebook.sh --NotebookApp.token='1234'"
