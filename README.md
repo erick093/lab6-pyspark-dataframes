@@ -1,4 +1,4 @@
-# Laboratorio 5 - PySpark - RDDs
+# Laboratorio 6 - PySpark - Dataframes
 
 Llenar los siguientes campos:
 
